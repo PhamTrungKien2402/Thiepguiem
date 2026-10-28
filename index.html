@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Chuc mung ngay 8/3</title>
+    <title>Lời mời ăn tối dành cho Nguyễn Anh Thư ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./asset/style.css">
     <script type="text/javascript" src="./asset/jquery.min.js"></script>
     <script type="text/javascript" src="./asset/jscex.min.js"></script>
@@ -18,26 +21,47 @@
 <body>
     <div id="main">
         <div id="wrap">
-            <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
+            <div id="text">
+                <!-- Phần 1: Lời ngỏ và câu hỏi mời ăn tối -->
                 <div id="code">
-                    <font color="#000"><span class="say">Chúc mừng 8/3 đến những bông hoa rực rỡ đã làm bạn với tớ những năm tháng quaaaa!!</span><br>
-                        <span class="say"> </span><br>
-                        <span class="say">Dù cậu là ai, đang ở đâu. Mới quen hay là bạn học cũ nè, tớ đều nhớ tới các cậu và gửi các cậu bức thư siêu siêu cute này.</span><br>
-                        <span class="say">Nhân ngày 8/3 này, tớ xin chúc cậu mãi xinh đẹp, đáng yêu, luôn hạnh phúc. Chúc cậu luôn gặp may mắn trong cuộc sống và vui vẻ mọi lúc mọi nơi. Nụ cười của cậu còn sáng hơn ánh mặt trời đấyyyyyy.</span><br>
-                        <span class="say">Chúc cậu ngày 8/3 thật vui vẻ và tràn đầy sự xinh đẹp cùng với nhiều yêu thương. </span><br>
-                        <span class="say"><span class="space"><img width="100px" height="100px" src="image/tym.png" alt=""><br>
-                        <span class="say"><span class="space"></span> --Your friend-- </span>
+                    <font color="#000">
+                        <span class="say title-recipient">Gửi em Nguyễn Anh Thư,</span><br><br>
+                        <span class="say">Có một bữa tối anh muốn dành cho em.</span><br>
+                        <span class="say">Không cần quá cầu kỳ, chỉ cần có em ngồi đối diện là đủ.</span><br><br>
+                        <span class="say question-text">Em có muốn cùng anh đi ăn tối không?</span>
                     </font>
-                    </p>
+                </div>
+
+                <!-- 2 Nút lựa chọn xuất hiện sau khi gõ xong câu hỏi -->
+                <div id="btn-group" style="display: none;">
+                    <button id="btn-agree" class="btn-action btn-agree">Em đồng ý ❤️</button>
+                    <button id="btn-think" class="btn-action btn-think">Em suy nghĩ thêm 🤔</button>
+                </div>
+
+                <!-- Phần 2: Lịch trình giờ ăn xuất hiện khi bấm "Em đồng ý" -->
+                <div id="schedule-code" style="display: none;">
+                    <font color="#000">
+                        <span class="say title-recipient">Gửi em Nguyễn Anh Thư,</span><br><br>
+                        <span class="say">Anh muốn mời em cùng ăn tối tại <strong class="highlight-place">Gogi</strong>.</span><br><br>
+                        <span class="say schedule-time">⏰ 18:30, ngày 03/11</span><br>
+                        <span class="say schedule-pickup">🚗 Anh sẽ qua đón em</span><br><br>
+                        <span class="say schedule-note">Em hãy mặc thật đẹp nhé, vì tối hôm đó anh muốn mọi thứ đều đáng nhớ. ❤️</span><br><br>
+                        <span class="say"><span class="space"></span><img width="80px" height="80px" src="image/tym.png" alt=""></span>
+                    </font>
                 </div>
             </div>
             <canvas id="canvas" width="1100" height="680"></canvas>
+            <!-- Mũi tên nhỏ dưới gốc cây để quay về trang đầu -->
+            <div id="btn-back-home" class="btn-back-home" style="display: none;" title="Quay về trang đầu (Click here)">
+                <span class="arrow-icon">↩</span>
+                <span class="arrow-text">Quay về</span>
+            </div>
         </div>
 
     </div>
 
-    <audio id="myAudio" autoplay="autoplay">
-        <source src="music/nhac.mp3" type="audio/mp3" />
+    <audio id="myAudio" autoplay="autoplay" loop="loop">
+        <source src="music/sandwich-and-story.mp3" type="audio/mp3" />
     </audio>
 
 </body>

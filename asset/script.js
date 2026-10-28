@@ -62,7 +62,10 @@
         y;
       x = e.pageX - offset.left;
       y = e.pageY - offset.top;
-      if (seed.hover(x, y)) {
+      var seedX = seed.heart.point.x;
+      var seedY = seed.heart.point.y;
+      var isNear = Math.abs(x - seedX) < 90 && Math.abs(y - seedY) < 60;
+      if (seed.hover(x, y) || isNear) {
         hold = 0;
         canvas.unbind("click");
         canvas.unbind("mousemove");
@@ -75,7 +78,10 @@
         y;
       x = e.pageX - offset.left;
       y = e.pageY - offset.top;
-      canvas.toggleClass("hand", seed.hover(x, y));
+      var seedX = seed.heart.point.x;
+      var seedY = seed.heart.point.y;
+      var isNear = Math.abs(x - seedX) < 90 && Math.abs(y - seedY) < 60;
+      canvas.toggleClass("hand", seed.hover(x, y) || isNear);
     });
 
   var seedAnimate = eval(
@@ -147,19 +153,9 @@
 
   var textAnimate = eval(
     Jscex.compile("async", function () {
-      // var together = new Date();
-      // together.setFullYear(2024,10 , 18);
-      // together.setHours(0);
-      // together.setMinutes(0);
-      // together.setSeconds(0);
-      // together.setMilliseconds(0);
-
-      $("#code").show().typewriter();
-      $("#clock-box").fadeIn(500);
-      while (true) {
-        timeElapse(together);
-        $await(Jscex.Async.sleep(1000));
-      }
+      $("#code").show().typewriter(function() {
+        $("#btn-group").fadeIn(600);
+      });
     })
   );
 
@@ -177,9 +173,33 @@
   );
 
   runAsync().start();
+
+  // Khi em bấm "Em đồng ý" -> hiện lịch trình ăn tối
+  $("#btn-agree").click(function () {
+    $("#btn-group").fadeOut(300);
+    $("#code").fadeOut(400, function () {
+      $("#schedule-code").show().typewriter(function() {
+        $("#btn-back-home").fadeIn(600);
+      });
+    });
+  });
+
+  // Khi em bấm "Em suy nghĩ thêm" -> trở về trang đầu tiên Click here
+  $("#btn-think").click(function () {
+    window.location.reload();
+  });
+
+  // Khi bấm vào mũi tên nhỏ dưới gốc cây -> trở về trang đầu tiên Click here
+  $("#btn-back-home").click(function () {
+    window.location.reload();
+  });
 })();
 
-document.addEventListener("click", function() {
-    var audio = document.getElementById("myAudio");
-    audio.play();
+document.addEventListener("click", function () {
+  var audio = document.getElementById("myAudio");
+  if (audio && audio.paused) {
+    audio.play().catch(function(e) {
+      console.log(e);
+    });
+  }
 });
